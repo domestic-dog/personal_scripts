@@ -9,11 +9,11 @@ public_key_path = "${var.public_key_path}"
 zone = "${var.zone}"
 #app_disk_img = "${var.app_disk_img}"
 }
-module "web-ui" {
-source = "./modules/web-ui"
-public_key_path = "${var.public_key_path}"
-zone = "${var.zone}"
-#db_disk_image = "${var.db_disk_image}"
-}
+#module "web-ui" {
+#source = "./modules/web-ui"
+#public_key_path = "${var.public_key_path}"
+#zone = "${var.zone}"
+##db_disk_image = "${var.db_disk_image}"
+#}
 
 
