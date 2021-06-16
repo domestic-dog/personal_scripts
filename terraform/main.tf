@@ -16,4 +16,24 @@ zone = "${var.zone}"
 ##db_disk_image = "${var.db_disk_image}"
 #}
 
+resource "google_compute_instance" "app" {
+name = "learn-jenkins"
+machine_type = "g1-small"
+zone = "${var.zone}"
+tags = ["jenkins"]
+boot_disk {
+initialize_params {
+image = "ubuntu-1604-xenial-v20210429"
+}
+}
 
+
+network_interface {
+network = "default"
+access_config {
+nat_ip = "${google_compute_address.app_ip.address}"
+}
+
+}
+}
+resource "google_compute_address" "app_ip" { name = "ip-test" }
