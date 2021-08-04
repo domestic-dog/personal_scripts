@@ -1,0 +1,24 @@
+{
+ "builders": [
+ {
+ "type": "googlecompute",
+ "project_id": "week-3-314020"
+,
+ "image_name": "docker-default-{{timestamp}}",
+ "source_image": "ubuntu-1604-xenial-v20210429"
+,
+ "zone": "europe-west1-b",
+ "ssh_username": "no",
+ "machine_type": "f1-micro"
+ }
+ ], 
+
+"provisioners": [
+ {
+ "type": "shell",
+ "script": "scripts/install_docker.sh"
+ }
+ ]
+
+
+}
