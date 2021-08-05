@@ -1,4 +1,4 @@
-resource "google_compute_instance" "app" {
+resource "google_compute_instance" "service-entity" {
 name = "service-entity"
 machine_type = "g1-small"
 #zone = "${var.zone}"
@@ -12,7 +12,7 @@ image = "${var.app_disk_img}"
 network_interface {
 network = "default"
 access_config {
-nat_ip = "${google_compute_address.app_ip.address}"
+nat_ip = ""
 }
 }
 #metadata  = {
@@ -34,7 +34,7 @@ image = "${var.app_disk_default}"
 network_interface {
 network = "default"
 access_config {
-nat_ip = "${google_compute_address.mq_ip.address}"
+nat_ip = "35.205.225.217"
 }
 }
 #metadata  = {
