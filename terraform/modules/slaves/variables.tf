@@ -2,7 +2,10 @@ variable app_disk_img {
 description = "docker-default-instance"
 default = "docker-default-1628098422"
 }
-
+variable "app_disk_default" {
+description = "docker instance"
+default = "docker-default-1628098422"
+}
 variable public_key_path {
 default = "/home/no/Desktop/infra-repo/secrets/id_rsa.pub"
 description = "Path to the public key used for ssh access"

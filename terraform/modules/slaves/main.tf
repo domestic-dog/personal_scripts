@@ -12,7 +12,7 @@ image = "${var.app_disk_img}"
 network_interface {
 network = "default"
 access_config {
-nat_ip = "${google_compute_address.app_ip.address}"
+nat_ip = "${google_compute_address.slave_ip.address}"
 }
 }
 #metadata  = {
@@ -20,7 +20,7 @@ nat_ip = "${google_compute_address.app_ip.address}"
 #}
 }
 
-resource "google_compute_address" "app_ip" { name = "slave-party-ip" }
+resource "google_compute_address" "slave_ip" { name = "slave-party-ip" }
 resource "google_compute_firewall" "slave-party" {
 name = "slave-party-default"
 network = "default"
@@ -31,3 +31,4 @@ ports = ["8080"]
 source_ranges = ["0.0.0.0/0"]
 target_tags = ["slaves"]
 }
+#open ports for mongodb

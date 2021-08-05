@@ -20,7 +20,7 @@ nat_ip = "${google_compute_address.app_ip.address}"
 #}
 }
 
-resource "google_compute_instance" "app" {
+resource "google_compute_instance" "rabbitmq" {
 name = "rabbit-mq"
 machine_type = "g1-small"
 #zone = "${var.zone}"
@@ -34,7 +34,7 @@ image = "${var.app_disk_default}"
 network_interface {
 network = "default"
 access_config {
-nat_ip = "${google_compute_address.app_ip.address}"
+nat_ip = "${google_compute_address.mq_ip.address}"
 }
 }
 #metadata  = {
@@ -43,6 +43,7 @@ nat_ip = "${google_compute_address.app_ip.address}"
 }
 
 resource "google_compute_address" "app_ip" { name = "serv-entity-ip" }
+resource "google_compute_address" "mq_ip" { name = "mq-ip" }
 resource "google_compute_firewall" "firewall_jenkins" {
 name = "serv-entity-default"
 network = "default"
